@@ -1,6 +1,6 @@
 set -e
 
-log_path=/data/openpilot/log.txt
+log_path=/data/openpilot-patch/log.txt
 
 echo $(date -u) "Start" >> $log_path
 
@@ -8,8 +8,8 @@ disk_mpc_path=/data/openpilot/selfdrive/controls/lib/long_mpc.py
 target_mpc_path=/data/openpilot-patch/long_mpc.py
 backup_mpc_path=/data/openpilot-patch/long_mpc_backup.py
 
-disk_md5=md5sum $disk_mpc_path | awk '{ print $1 }'
-target_md5=md5sum $target_mpc_path | awk '{ print $1 }'
+disk_md5=$(md5sum $disk_mpc_path | awk '{ print $1 }')
+target_md5=$(md5sum $target_mpc_path | awk '{ print $1 }')
 orig_md5=cd3cc9503927eff6b350f47dec90dc39
 
 if [[ $disk_md5 == $orig_md5 ]]; then
