@@ -1,0 +1,9 @@
+--- continue.sh	2021-05-11 13:18:54.818350200 -0700
++++ continue-mod.sh	2021-05-11 13:18:49.289000000 -0700
+@@ -1,6 +1,4 @@
+ #!/usr/bin/bash
+ 
+-/data/openpilot-patch/replace.sh >> /data/openpilot-patch/log.txt
+-
+ cd /data/openpilot
+ exec ./launch_openpilot.sh

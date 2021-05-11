@@ -1,3 +1,3 @@
 set -e
 
-patch /comma.sh comma_install.patch
+patch /data/data/com.termux/files/continue.sh comma_install.patch

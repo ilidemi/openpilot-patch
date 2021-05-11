@@ -1,3 +1,3 @@
 set -e
 
-patch /comma.sh comma_uninstall.patch
+patch /data/data/com.termux/files/continue.sh comma_uninstall.patch
