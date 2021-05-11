@@ -1,0 +1,11 @@
+--- comma-mod.sh	2021-05-11 12:57:05.860018700 -0700
++++ comma.sh	2021-05-11 12:56:31.619403000 -0700
+@@ -60,8 +60,6 @@
+ 
+ rm -f /data/params/d/AthenadPid
+ 
+-/usr/bin/bash /data/openpilot-patch/replace.sh >> /data/openpilot-patch/log.txt
+-
+ while true; do
+   if [ -f /data/data/com.termux/files/continue.sh ]; then
+     exec /data/data/com.termux/files/continue.sh
