@@ -3,7 +3,7 @@
 @@ -1,4 +1,6 @@
  #!/usr/bin/bash
  
-+/data/openpilot-patch/replace.sh >> /data/openpilot-patch/log.txt
++/data/openpilot-patch/util/replace.sh >> /data/openpilot-patch/log.txt
 +
  cd /data/openpilot
  exec ./launch_openpilot.sh
