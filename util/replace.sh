@@ -10,7 +10,7 @@ target_dynamic_follow_path=/data/openpilot-patch/src/dynamic_follow
 
 disk_md5=$(md5sum $disk_mpc_path | awk '{ print $1 }')
 target_md5=$(md5sum $target_mpc_path | awk '{ print $1 }')
-orig_md5=cd3cc9503927eff6b350f47dec90dc39
+orig_md5=cd3cc9503927eff6b350f47dec90dc39111111 # broken
 
 if [[ $disk_md5 == $orig_md5 ]]; then
     echo $(date -u) "Replacing disk with target"
