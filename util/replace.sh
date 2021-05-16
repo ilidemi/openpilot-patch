@@ -5,8 +5,8 @@ echo $(date -u) "Start"
 disk_mpc_path=/data/openpilot/selfdrive/controls/lib/long_mpc.py
 target_mpc_path=/data/openpilot-patch/src/long_mpc.py
 backup_mpc_path=/data/openpilot-patch/src/long_mpc_backup.py
-disk_dynamic_follow_path=/data/openpilot/selfdrive/controls/lib/dynamic_follow/
-target_dynamic_follow_path=/data/openpilot-patch/src/dynamic_folow/
+disk_dynamic_follow_path=/data/openpilot/selfdrive/controls/lib/dynamic_follow
+target_dynamic_follow_path=/data/openpilot-patch/src/dynamic_follow
 
 disk_md5=$(md5sum $disk_mpc_path | awk '{ print $1 }')
 target_md5=$(md5sum $target_mpc_path | awk '{ print $1 }')
