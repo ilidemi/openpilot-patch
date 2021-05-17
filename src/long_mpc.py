@@ -51,10 +51,10 @@ def input_loop(input_queue):
       elif is_pressed and not new_is_pressed:
         # TODO: remove inline dims
         if short_press_range[0] <= time_in_state <= short_press_range[1]:
-          input_queue.push(InputEvent.SHORT_PRESS)
+          input_queue.put(InputEvent.SHORT_PRESS)
           dim(1.0)
         elif long_press_range[0] <= time_in_state <= long_press_range[1]:
-          input_queue.push(InputEvent.LONG_PRESS)
+          input_queue.put(InputEvent.LONG_PRESS)
           dim(3.0)
       else: # Two pressed or two depressed events in a row
         log_f.write(f"{datetime.now()} is_pressed:{is_pressed} new_is_pressed:{new_is_pressed} duration:{time_in_state}\n")
@@ -64,7 +64,7 @@ def input_loop(input_queue):
   except Exception as e:
     log_f.write(f"{datetime.now()} Input loop exception: {e}\n")
     log_f.flush()
-    subprocess.Popen(['python', '/data/openpilot-patch/error.py'])
+    subprocess.Popen(['python', '/data/openpilot-patch/util/error.py'])
 
 
 class OutputEvent(Enum):
@@ -93,7 +93,7 @@ def output_loop(output_queue):
   except Exception as e:
     log_f.write(f"{datetime.now()} Output loop exception: {e}\n")
     log_f.flush()
-    subprocess.Popen(['python', '/data/openpilot-patch/error.py'])
+    subprocess.Popen(['python', '/data/openpilot-patch/util/error.py'])
 
 
 class LongitudinalMpc():
@@ -158,21 +158,21 @@ class LongitudinalMpc():
   def update(self, CS, lead):
     try:
       input_event = self.input_queue.get_nowait()
+    
+      if input_event == InputEvent.LONG_PRESS:
+        self.TR_override = 1.8 if self.TR_override is None else None
+      
+      # Output current status
+      output_event = OutputEvent.LONG_DIM if self.TR_override is None else OutputEvent.SHORT_DIM
+      try:
+        self.output_queue.put_nowait(output_event)
+      except Full:
+        log_f = open('/data/openpilot-patch/mpc_update_log.txt', 'a')
+        log_f.write(f"{datetime.now()} Output queue is full\n")
+        log_f.flush()
+        subprocess.Popen(['python', '/data/openpilot-patch/util/error.py'])
     except TimeoutError:
       pass
-    
-    if input_event == InputEvent.LONG_PRESS:
-      self.TR_override = 1.8 if self.TR_override is None else None
-    
-    # Output current status
-    output_event = OutputEvent.LONG_DIM if self.TR_override is None else OutputEvent.SHORT_DIM
-    try:
-      self.output_queue.put_nowait(output_event)
-    except Full:
-      log_f = open('/data/openpilot-patch/mpc_update_log.txt', 'a')
-      log_f.write(f"{datetime.now()} Output queue is full\n")
-      log_f.flush()
-      subprocess.Popen(['python', '/data/openpilot-patch/error.py'])
 
     v_ego = CS.vEgo
 
