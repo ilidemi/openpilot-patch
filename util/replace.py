@@ -32,7 +32,7 @@ new_files = [
 ]
 
 def file_md5(path):
-    with open(path, 'b') as f:
+    with open(path, 'rb') as f:
         contents = f.read()
         return hashlib.md5(contents).digest()
 
