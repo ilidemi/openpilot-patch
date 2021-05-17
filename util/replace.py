@@ -69,7 +69,6 @@ for file_to_copy in files_to_copy:
     copy_full_path = f'{disk_path}/{file_to_copy}'
     if os.path.exists(copy_full_path):
         os.remove(copy_full_path)
-    os.remove(f'{disk_path}/{file_to_copy}')
     shutil.copy(f'{target_path}/{file_to_copy}', copy_full_path)
     log(f'{file_to_copy} copied')
 
