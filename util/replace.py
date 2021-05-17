@@ -52,7 +52,7 @@ for hashed_file in hashed_files:
     else:
         log(f'{hashed_file.rel_path} has unknown hash: {disk_md5}')
         subprocess.Popen(['python', '/data/openpilot-patch/util/error.py'])
-        raise 'Unknown hash'
+        raise Exception('Unknown hash')
 
 files_to_copy += new_files
 
