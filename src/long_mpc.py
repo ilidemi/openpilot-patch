@@ -54,10 +54,10 @@ def input_loop(input_queue):
         input_log("Press started")
       elif is_pressed and not new_is_pressed:
         if short_press_range[0] <= time_in_state <= short_press_range[1]:
-          input_log("Short press finished: {time_in_state}")
+          input_log(f"Short press finished: {time_in_state}")
           input_queue.put(InputEvent.SHORT_PRESS)
         elif long_press_range[0] <= time_in_state <= long_press_range[1]:
-          input_log("Long press finished: {time_in_state}")
+          input_log(f"Long press finished: {time_in_state}")
           input_queue.put(InputEvent.LONG_PRESS)
         else:
           input_log("Unknown press finished")
