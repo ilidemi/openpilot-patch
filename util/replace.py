@@ -22,6 +22,7 @@ class HashedFile:
 
 hashed_files = [
     HashedFile('long_mpc.py', 'cd3cc9503927eff6b350f47dec90dc39'),
+    HashedFile('longitudinal_mpc/libmpc_py.py', '40563a2710e5824c3ede434f05b2d924'),
     HashedFile('longitudinal_mpc/libmpc1.so', 'fbf3a9c58f3ce9d14fb7818550577003'),
     HashedFile('longitudinal_mpc/libmpc2.so', 'fbf3a9c58f3ce9d14fb7818550577003')
 ]
