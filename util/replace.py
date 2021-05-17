@@ -60,6 +60,8 @@ for file_to_backup in files_to_backup:
     backup_full_path = f'{backup_path}/{file_to_backup}'
     if os.path.exists(backup_full_path):
         os.remove(backup_full_path)
+    os.makedirs(os.path.dirname(backup_full_path), exist_ok=True)
+        
     shutil.copy(f'{disk_path}/{file_to_backup}', backup_full_path)
     log(f'{file_to_backup} backed up')
 
