@@ -57,8 +57,8 @@ def input_loop(input_queue):
     is_pressed = None
     state_change_time = time.monotonic()
 
-    short_press_range = (0.7, 2.)
-    long_press_range = (3., 5.)
+    short_press_range = (0., 0.5)
+    long_press_range = (1.5, 3.)
 
     while True:
       button_data = button_file.read(24)
