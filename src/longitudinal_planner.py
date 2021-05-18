@@ -185,6 +185,8 @@ class Planner():
     self.output_thread = Thread(target=output_loop, args=(self.output_queue,))
     self.output_thread.start()
 
+    self.TR_override = None
+
   def choose_solution(self, v_cruise_setpoint, enabled):
     if enabled:
       solutions = {'cruise': self.v_cruise}
@@ -285,8 +287,8 @@ class Planner():
     self.mpc1.set_cur_state(self.v_acc_start, self.a_acc_start)
     self.mpc2.set_cur_state(self.v_acc_start, self.a_acc_start)
 
-    self.mpc1.update(sm['carState'], lead_1)
-    self.mpc2.update(sm['carState'], lead_2)
+    self.mpc1.update(sm['carState'], lead_1, self.TR_override)
+    self.mpc2.update(sm['carState'], lead_2, self.TR_override)
 
     self.choose_solution(v_cruise_setpoint, enabled)
 
