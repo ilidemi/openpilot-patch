@@ -22,6 +22,7 @@ class HashedFile:
 
 hashed_files = [
     HashedFile('long_mpc.py', 'cd3cc9503927eff6b350f47dec90dc39'),
+    HashedFile('longitudinal_planner.py', 'b4cf0480a5c54c7c7c3f58af7e361b0f'),
     HashedFile('longitudinal_mpc/longitudinal_mpc.c', '3e509bd185e5fee736b7aed568536c33'),
     HashedFile('longitudinal_mpc/lib_mpc_export/acado_solver.c', '6e731dad215753195cc960a555d7320a'),
     HashedFile('longitudinal_mpc/libmpc_py.py', '40563a2710e5824c3ede434f05b2d924'),
