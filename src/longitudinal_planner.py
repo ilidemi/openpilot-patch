@@ -100,7 +100,7 @@ def dim(duration):
   with open(brightness_path, 'r') as brightness_f:
     start_brightness = brightness_f.read()
   with open(brightness_path, 'w') as brightness_f:
-    brightness_f.write(int(start_brightness) // 2)
+    brightness_f.write(str(int(start_brightness) // 2))
   time.sleep(duration)
   with open(brightness_path, 'w') as brightness_f:
     brightness_f.write(start_brightness)
