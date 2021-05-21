@@ -43,7 +43,7 @@ def file_md5(path):
 os.makedirs(backup_path, exist_ok=True)
 
 files_to_backup = []
-files_to_copy = []
+files_to_copy = new_files
 for hashed_file in hashed_files:
     disk_md5 = file_md5(f'{disk_path}/{hashed_file.rel_path}')
     target_md5 = file_md5(f'{target_path}/{hashed_file.rel_path}')
@@ -57,8 +57,6 @@ for hashed_file in hashed_files:
         log(f'{hashed_file.rel_path} has unknown hash: {disk_md5}')
         subprocess.Popen(['python', '/data/openpilot-patch/util/error.py'])
         raise Exception('Unknown hash')
-
-files_to_copy += new_files
 
 for file_to_backup in files_to_backup:
     backup_full_path = f'{backup_path}/{file_to_backup}'
