@@ -1,0 +1,88 @@
+diff --git a/selfdrive/ui/qt/widgets/setup.cc b/selfdrive/ui/qt/widgets/setup.cc
+index 2633220..6ccbd93 100644
+--- a/selfdrive/ui/qt/widgets/setup.cc
++++ b/selfdrive/ui/qt/widgets/setup.cc
+@@ -136,22 +136,24 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
+   vlayout->setMargin(30);
+   vlayout->setSpacing(15);
+
+-  vlayout->addWidget(new QLabel("Upgrade now"), 1, Qt::AlignTop);
+-
+-  QLabel* description = new QLabel("Become a comma prime member at my.comma.ai and get premium features!");
+-  description->setStyleSheet(R"(
+-    font-size: 50px;
+-    color: #b8b8b8;
+-  )");
+-  description->setWordWrap(true);
+-  vlayout->addWidget(description, 2, Qt::AlignTop);
+-
+-  QVector<QString> features = {"✓ REMOTE ACCESS", "✓ 14 DAYS OF STORAGE", "✓ DEVELOPER PERKS"};
+-  for (auto &f: features) {
+-    QLabel* feature = new QLabel(f);
+-    feature->setStyleSheet(R"(font-size: 40px;)");
+-    vlayout->addWidget(feature, 0, Qt::AlignBottom);
+-  }
++  QLabel* greeting = new QLabel("Have a nice drive!");
++  greeting->setWordWrap(true);
++  vlayout->addWidget(greeting, 1, Qt::AlignTop);
++
++  // QLabel* description = new QLabel("Become a comma prime member at my.comma.ai and get premium features!");
++  // description->setStyleSheet(R"(
++  //   font-size: 50px;
++  //   color: #b8b8b8;
++  // )");
++  // description->setWordWrap(true);
++  // vlayout->addWidget(description, 2, Qt::AlignTop);
++
++  // QVector<QString> features = {"✓ REMOTE ACCESS", "✓ 14 DAYS OF STORAGE", "✓ DEVELOPER PERKS"};
++  // for (auto &f: features) {
++  //   QLabel* feature = new QLabel(f);
++  //   feature->setStyleSheet(R"(font-size: 40px;)");
++  //   vlayout->addWidget(feature, 0, Qt::AlignBottom);
++  // }
+
+   setLayout(vlayout);
+ }
+@@ -165,26 +167,26 @@ SetupWidget::SetupWidget(QWidget* parent) : QFrame(parent) {
+   QVBoxLayout* finishRegistationLayout = new QVBoxLayout;
+   finishRegistationLayout->setMargin(30);
+
+-  QLabel* registrationDescription = new QLabel("Pair your device with the comma connect app");
++  QLabel* registrationDescription = new QLabel("Have a nice drive!");
+   registrationDescription->setWordWrap(true);
+-  registrationDescription->setAlignment(Qt::AlignCenter);
+-  registrationDescription->setStyleSheet(R"(
+-    font-size: 55px;
+-    font-weight: 400;
+-  )");
++  // registrationDescription->setAlignment(Qt::AlignCenter);
++  // registrationDescription->setStyleSheet(R"(
++  //   font-size: 55px;
++  //   font-weight: 400;
++  // )");
+
+   finishRegistationLayout->addWidget(registrationDescription);
+
+-  QPushButton* finishButton = new QPushButton("Finish setup");
+-  finishButton->setFixedHeight(200);
+-  finishButton->setStyleSheet(R"(
+-    border-radius: 30px;
+-    font-size: 55px;
+-    font-weight: 500;
+-    background: #585858;
+-  )");
+-  finishRegistationLayout->addWidget(finishButton);
+-  QObject::connect(finishButton, &QPushButton::released, this, &SetupWidget::showQrCode);
++  // QPushButton* finishButton = new QPushButton("Finish setup");
++  // finishButton->setFixedHeight(200);
++  // finishButton->setStyleSheet(R"(
++  //   border-radius: 30px;
++  //   font-size: 55px;
++  //   font-weight: 500;
++  //   background: #585858;
++  // )");
++  // finishRegistationLayout->addWidget(finishButton);
++  // QObject::connect(finishButton, &QPushButton::released, this, &SetupWidget::showQrCode);
+
+   QWidget* finishRegistration = new QWidget;
+   finishRegistration->setLayout(finishRegistationLayout);
